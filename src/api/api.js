@@ -6,7 +6,7 @@ const WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/';
 export async function getCityWeather(city) {
     // return await resolve(axios.get(WEATHER_API_URL.concat("weather"), { params: { q: city, appid: KEY } }));
     let ans;
-    const resp = await axios.get(WEATHER_API_URL.concat("weather"), { params: { q: city, appid: KEY } }).then( (resp) => {
+    await axios.get(WEATHER_API_URL.concat("weather"), { params: { q: city, appid: KEY } }).then( (resp) => {
         ans = resp;
     }).catch( e => {
         ans = e;
