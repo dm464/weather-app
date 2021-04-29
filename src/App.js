@@ -3,8 +3,7 @@ import { Today, Week } from './pages';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { Navbar } from './components';
 import { ThemeProvider } from '@material-ui/core/styles';
