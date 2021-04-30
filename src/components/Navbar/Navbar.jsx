@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -78,8 +78,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
     const classes = useStyles();
+    const [input, setInput] = useState('');
 
     return (
         <div className={classes.root}>
@@ -108,6 +109,13 @@ export default function Navbar() {
                                 input: classes.inputInput,
                             }}
                             inputProps={{ 'aria-label': 'search' }}
+                            onChange={(e) => setInput(e.target.value)}
+                            onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    props.fetchWeather(props.loc);
+                                    props.handleLocationChange(input);
+                                }
+                            }}
                         />
                     </div>
                 </Toolbar>
