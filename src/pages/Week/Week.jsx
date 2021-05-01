@@ -8,7 +8,7 @@ export default function Week(props) {
     const numDay = new Date().getDay();
     console.log(week[0]);
     return (
-        <div>
+        <div style={{display: 'flex', flexWrap: 'wrap'}}>
             {week.map((day, index) =>
                 <WeatherTile
                     key={index}

@@ -84,7 +84,7 @@ export default function Navbar(props) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="sticky">
+            <AppBar position="relative">
                 <Toolbar className={classes.topToolbar}>
                     <IconButton
                         edge="start"
