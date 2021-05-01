@@ -19,13 +19,11 @@ export default function WeatherTile(props) {
     const classes = useStyles({ size: props.size });
     return (
         <Card className={classes.root}>
-            <CardContent>
+            <CardContent style={{ textAlign: 'left' }}>
                 <Typography variant="h6">
                     Day, Date
                 </Typography>
-                <Typography>
-                    icon
-                </Typography>
+                <img src={props.icon} alt="amCharts weather icon" height={64} />
                 <Typography variant="h6">
                     Hi: -  Low: -
                 </Typography>
