@@ -10,5 +10,9 @@ export default function useWeather(zip) {
         setWeather(data.data);
     };
 
+    useEffect(() => {
+        fetchWeather(zip);
+    }, [zip])
+
     return {weather, fetchWeather};
 }

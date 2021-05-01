@@ -126,7 +126,7 @@ export default function Navbar(props) {
                         Today
                     </Button>
                     <Button component={NavLink} to="/week" exact activeClassName={classes.selectedLink}>
-                        10 Day
+                        7-Day Forecast
                     </Button>
                 </Toolbar>
             </AppBar>

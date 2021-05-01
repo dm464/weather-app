@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { kToF } from "../../utils/conversions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,19 +17,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function WeatherTile(props) {
-    const classes = useStyles({ size: props.size });
+    const { size, icon, weather, day } = props;
+    const classes = useStyles({ size: size });
     return (
         <Card className={classes.root}>
             <CardContent style={{ textAlign: 'left' }}>
                 <Typography variant="h6">
-                    Day, Date
+                    {day}
                 </Typography>
                 <img src={props.icon} alt="amCharts weather icon" height={64} />
                 <Typography variant="h6">
-                    Hi: -  Low: -
+                    Hi: {kToF(weather.temp.max)}&deg; Low: {kToF(weather.temp.min)}&deg;
                 </Typography>
                 <Typography>
-                    Weather
+                    {weather.weather[0].main}
                 </Typography>
             </CardContent>
         </Card>

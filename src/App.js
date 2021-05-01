@@ -19,17 +19,21 @@ function App() {
         console.log(weather);
     }
     return (
-        <ThemeProvider theme={theme}>
-            <Router>
-                <div className="App">
-                    <Navbar handleLocationChange={setLocation} fetchWeather={fetchWeather} loc={loc} />
-                    <Switch>
-                        <Route path="/" render={() => <Today weather={weather} />} exact />
-                        <Route path="/week" render={() => <Week />} exact />
-                    </Switch>
-                </div>
-            </Router>
-        </ThemeProvider>
+        <>
+            {weather &&
+                <ThemeProvider theme={theme}>
+                    <Router>
+                        <div className="App">
+                            <Navbar handleLocationChange={setLocation} fetchWeather={fetchWeather} loc={loc} />
+                            <Switch>
+                                <Route path="/" render={() => <Today today={weather.current} />} exact />
+                                <Route path="/week" render={() => <Week today={weather.current} week={weather.daily} />} exact />
+                            </Switch>
+                        </div>
+                    </Router>
+                </ThemeProvider >
+            }
+        </>
     );
 }
 
