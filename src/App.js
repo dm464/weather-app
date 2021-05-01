@@ -13,8 +13,11 @@ import useWeather from './hooks/useWeather';
 
 
 function App() {
-    const [loc, setLocation] = useState('new york');
+    const [loc, setLocation] = useState('07424');
     const { weather, fetchWeather } = useWeather(loc);
+    if (weather) {
+        console.log(weather);
+    }
     return (
         <ThemeProvider theme={theme}>
             <Router>

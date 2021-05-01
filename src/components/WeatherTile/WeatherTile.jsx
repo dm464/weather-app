@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
             height: props => props.size,
             width: props => props.size,
         },
-        margin: theme.spacing(2)
+        margin: theme.spacing(2),
     },
 }));
 
@@ -20,8 +20,17 @@ export default function WeatherTile(props) {
     return (
         <Card className={classes.root}>
             <CardContent>
-                <Typography variant="h4">
-                    Test
+                <Typography variant="h6">
+                    Day, Date
+                </Typography>
+                <Typography>
+                    icon
+                </Typography>
+                <Typography variant="h6">
+                    Hi: -  Low: -
+                </Typography>
+                <Typography>
+                    Weather
                 </Typography>
             </CardContent>
         </Card>
