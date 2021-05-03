@@ -12,7 +12,7 @@ export function addDays(date, days) {
 }
 
 export function mapToIcon(id, isNight = false) {
-    switch (Math.round(id)) {
+    switch (Math.round(id/100)) {
         case 2:
             return icons.thunder;
         case 3:
@@ -22,9 +22,9 @@ export function mapToIcon(id, isNight = false) {
             else {
                 return isNight ? icons.rainy_4 : icons.rainy_2;
             }
-            break;
         case 5:
             if (id === 500) {
+                console.log('here')
                 return isNight ? icons.rainy_4 : icons.rainy_2;
             }
             else if (id === 501 && id === 520) {
@@ -36,8 +36,6 @@ export function mapToIcon(id, isNight = false) {
             else {
                 return icons.rainy_6;
             }
-
-            break;
         case 6:
             // snow - excluding sunny snow svg images
             if (id === 600 || id === 620) {
@@ -55,7 +53,7 @@ export function mapToIcon(id, isNight = false) {
         case 8:
             switch (id) {
                 case 800:
-                    return isNight ? icons.day : icons.night;
+                    return isNight ? icons.night : icons.day;
                 case 801:
                     return isNight ? icons.cloudy_night_1 : icons.cloudy_day_1;
                 case 802:

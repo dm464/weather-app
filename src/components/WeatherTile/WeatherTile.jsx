@@ -28,14 +28,14 @@ export default function WeatherTile(props) {
                 <Typography variant="h6">
                     {allDays[date.getDay()]} {date.getMonth() + 1}/{date.getDate()}
                 </Typography>
-                <img src={props.icon} alt="amCharts weather icon" height={64} />
+                <img src={icon} alt="amCharts weather icon" height={64} />
                 <Typography variant="h5">
                     {high}&deg; / {low}&deg;
                 </Typography>
                 <Typography>
-                    <i class="fas fa-umbrella"></i>
+                    <i className="fas fa-umbrella"></i>
                     {precipitation}%
-                <i class="fas fa-tint"></i>
+                <i className="fas fa-tint"></i>
                     {humidity}%
                 </Typography>
             </CardContent>
