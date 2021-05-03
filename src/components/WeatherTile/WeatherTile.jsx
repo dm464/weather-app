@@ -2,8 +2,8 @@ import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import { kToF } from "../../utils/conversions";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -19,24 +19,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function WeatherTile(props) {
-    const { size, icon, weather, day } = props;
+    const { size, icon, date, high, low, precipitation, humidity } = props;
+    const allDays = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
     const classes = useStyles({ size: size });
     return (
         <Card className={classes.root}>
             <CardContent style={{ textAlign: 'left' }}>
                 <Typography variant="h6">
-                    {day}
-                    <i class="fas fa-umbrella"></i>
+                    {allDays[date.getDay()]} {date.getMonth() + 1}/{date.getDate()}
                 </Typography>
                 <img src={props.icon} alt="amCharts weather icon" height={64} />
-                <Typography variant="h6">
-                    Hi: {kToF(weather.temp.max)}&deg;
-                </Typography>
-                <Typography variant="h6">
-                    Low: {kToF(weather.temp.min)}&deg;
+                <Typography variant="h5">
+                    {high}&deg; / {low}&deg;
                 </Typography>
                 <Typography>
-                    {weather.weather[0].main}
+                    <i class="fas fa-umbrella"></i>
+                    {precipitation}%
+                <i class="fas fa-tint"></i>
+                    {humidity}%
                 </Typography>
             </CardContent>
         </Card>

@@ -1,11 +1,12 @@
 import React from 'react';
 import { WeatherTile } from '../../components';
-import {thunder as icon} from '../../assets/weather-icons/animated';
+import { thunder as icon } from '../../assets/weather-icons/animated';
+import { kToF, addDays } from '../../utils/helpers';
 
 export default function Week(props) {
     const { today, week } = props;
-    const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-    const numDay = new Date().getDay();
+    const d = new Date();
+    const numDay = d.getDay();
     console.log(week[0]);
     return (
         <div style={{display: 'flex', flexWrap: 'wrap'}}>
@@ -15,7 +16,11 @@ export default function Week(props) {
                     size={200}
                     icon={icon}
                     weather={day}
-                    day={days[(numDay + index + 1) % 7]}
+                    date={addDays(d, index + 1)}
+                    high={kToF(day.temp.max)}
+                    low={kToF(day.temp.min)}
+                    precipitation={day.pop * 100}
+                    humidity={day.humidity}
                 />
             )}
         </div>
