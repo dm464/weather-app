@@ -24,7 +24,6 @@ export function mapToIcon(id, isNight = false) {
             }
         case 5:
             if (id === 500) {
-                console.log('here')
                 return isNight ? icons.rainy_4 : icons.rainy_2;
             }
             else if (id === 501 && id === 520) {
