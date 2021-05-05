@@ -9,6 +9,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        // minWidth: '70%',
         backgroundColor: 'rgba(255,255,255,0.2)',
         [theme.breakpoints.up('sm')]: {
             height: props => props.size,
@@ -16,6 +17,30 @@ const useStyles = makeStyles((theme) => ({
         },
         margin: theme.spacing(2),
     },
+    text: {
+        textAlign: 'right',
+        [theme.breakpoints.up('sm')]: {
+            textAlign: 'center',
+        }
+    },
+    subtle: {
+        color: 'rgb(0,0,0,0.5)'
+    },
+    icon: {
+        alignContent: 'center',
+        textAlign: 'center'
+    },
+    separate: {
+        flexGrow: 1,
+        [theme.breakpoints.up('sm')]: {
+            display: 'none'
+        }
+    },
+    inGrid: {
+        [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        }
+    }
 }));
 
 export default function WeatherTile(props) {
@@ -25,19 +50,34 @@ export default function WeatherTile(props) {
     return (
         <Card className={classes.root}>
             <CardContent style={{ textAlign: 'left' }}>
-                <Typography variant="h6">
-                    {allDays[date.getDay()]} {date.getMonth() + 1}/{date.getDate()}
-                </Typography>
-                <img src={icon} alt="amCharts weather icon" height={64} />
-                <Typography variant="h5">
-                    {high}&deg; / {low}&deg;
-                </Typography>
-                <Typography>
-                    <i className="fas fa-umbrella"></i>
-                    {precipitation}%
-                <i className="fas fa-tint"></i>
-                    {humidity}%
-                </Typography>
+                <Grid container spacing={2}>
+                    <Grid item className={classes.separate}>
+                        <img src={icon} alt="amCharts weather icon" height='100%' />
+                    </Grid>
+                    <Grid item sm={12}>
+                        <Grid item sm={12}>
+                            <Typography variant="h6" className={classes.text}>
+                                {allDays[date.getDay()]} {date.getMonth() + 1}/{date.getDate()}
+                            </Typography>
+                        </Grid>
+                        <Grid item sm={12} className={`${classes.icon} ${classes.inGrid}`}>
+                            <img src={icon} alt="amCharts weather icon" height={64} />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <Typography variant="h5" className={classes.text}>
+                                {high}&deg; / <span className={classes.subtle}>{low}&deg;</span>
+                            </Typography>
+                            <Typography className={classes.text}>
+                                <i className="fas fa-umbrella"></i>
+                                {precipitation}%
+                            {` `}
+                                <i className="fas fa-tint"></i>
+                                {humidity}%
+                        </Typography>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
             </CardContent>
         </Card>
     )
