@@ -49,7 +49,7 @@ export default function WeatherTile(props) {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '70%',
+        width: '80%',
         backgroundColor: 'rgba(255,255,255,0.2)',
         [theme.breakpoints.up('sm')]: {
             width: props => props.size,
